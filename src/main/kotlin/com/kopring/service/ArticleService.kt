@@ -23,5 +23,18 @@ class ArticleService {
         return ArticleResponseDTO(article.id,article.title,article.body)
     }
 
+    fun articleGetAll(): ArrayList<ArticleResponseDTO> {
+
+        val articles = articleRepository.findAll()
+
+        val response= arrayListOf<ArticleResponseDTO>()
+        for (article in articles) {
+            val dto = ArticleResponseDTO(article.id, article.title, article.body)
+            response.add(dto)
+        }
+
+        return response
+    }
+
 
 }
