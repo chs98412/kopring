@@ -36,5 +36,12 @@ class ArticleService {
         return response
     }
 
+    fun articleGetById(id: Long): ArticleResponseDTO {
+        val article= articleRepository.findById(id).get()
+        val response=ArticleResponseDTO(article.id, article.title, article.body)
+        return response
+
+    }
+
 
 }

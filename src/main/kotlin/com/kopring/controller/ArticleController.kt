@@ -38,4 +38,14 @@ class ArticleController {
                 .body(response)
     }
 
+    @GetMapping("/id")
+    fun getArticleById(@RequestParam id:Long): ResponseEntity<ArticleResponseDTO> {
+
+        val response= articleService.articleGetById(id)
+
+        return ResponseEntity
+                .ok()
+                .body(response)
+    }
+
 }
