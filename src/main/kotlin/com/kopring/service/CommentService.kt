@@ -29,4 +29,19 @@ class CommentService {
         return CommentResponseDTO(comment.id, comment.body)
 
     }
+
+    fun commentsGetByArticleId(id: Long): List<CommentResponseDTO> {
+
+        val article = articleRepository.findById(id).get()
+
+        val comments = commentRepository.findAllByArticle(article)
+
+        val response = arrayListOf<CommentResponseDTO>()
+        for (comment in comments) {
+            val dto=CommentResponseDTO(comment.id,comment.body)
+            response.add(dto)
+        }
+        return response
+
+    }
 }
